@@ -1,0 +1,75 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "kitty-direct",
+        "source": "~/dotfiles/assets/fastfetch/shinobu.png",
+        "height": 12,
+        "width": 26
+    },
+    "display": {
+        "separator": " ➜  ",
+        "color": "magenta"
+    },
+    "modules": [
+        "break",
+        {
+            "type": "title",
+            "key": " user   ",
+            "keyColor": "blue",
+            "format": "{#32}{1}"
+        },
+        {
+            "type": "title",
+            "key": "󰒋 host   ",
+            "keyColor": "green",
+            "format": "{#33}{2}"
+        },
+        {
+            "type": "host",
+            "key": "󰌢 model  ",
+            "keyColor": "yellow",
+            "format": "{#34}{vendor} {name}"
+        },
+        {
+            "type": "os",
+            "key": "󰣇 distro ",
+            "keyColor": "cyan",
+            "format": "{#35}{3} {12}"
+        },
+        {
+            "type": "uptime",
+            "key": "󱎫 uptime ",
+            "keyColor": "yellow",
+            "format": "{#32}{2}h {#33}{3}m {#34}{4}s"
+        },
+        {
+            "type": "shell",
+            "key": " shell  ",
+            "keyColor": "magenta",
+            "format": "{#32}{1} {4}"
+        },
+        {
+            "type": "packages",
+            "key": "󰏖 pkgs   ",
+            "keyColor": "blue",
+            "format": "{#33}{1}"
+        },
+        {
+            "type": "memory",
+            "key": "󰍛 memory ",
+            "keyColor": "green",
+            "format": "{#36}{1} {#37}/ {#34}{2} {#35}({3}{#35})"
+        },
+        {
+            "type": "disk",
+            "key": "󰋊 disk   ",
+            "keyColor": "cyan",
+            "format": "{#33}{1} {#37}/ {#32}{2} {#31}({3}{#31})"
+        },
+        "break",
+        {
+            "type": "colors",
+            "symbol": "circle"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+@define-color bg             #1e1f28;
+@define-color fg             #f8f8f2;
+@define-color selection_bg   #44475a;
+@define-color cursor         #bbbbbb;
+
+@define-color color0         #000000;
+@define-color color1         #ff5555;
+@define-color color2         #50fa7b;
+@define-color color3         #f0fa8b;
+@define-color color4         #bd92f8;
+@define-color color5         #ff78c5;
+@define-color color6         #8ae9fc;
+@define-color color7         #bbbbbb;
+
+@define-color color8         #545454;
+@define-color color9         #ff5454;
+@define-color color10        #50fa7b;
+@define-color color11        #f0fa8b;
+@define-color color12        #bd92f8;
+@define-color color13        #ff78c5;
+@define-color color14        #8ae9fc;
+@define-color color15        #ffffff;

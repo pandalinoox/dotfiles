@@ -1,0 +1,14 @@
+@import "../common.rasi"
+
+configuration {
+    matching: "prefix";
+    sort: true;
+    modi: "combi";
+    combi-modi: "drun,window";
+    show-icons: true;
+    combi-hide-mode-prefix: true;
+    drun-display-format: "{name}";
+    window-format: "{w} · {c} · {t}";
+    drun { fallback-icon: "application-x-addon"; }
+    window { fallback-icon: "application-x-addon"; }
+}

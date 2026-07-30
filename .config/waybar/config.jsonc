@@ -1,0 +1,93 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-left": 18,
+  "margin-right": 18,
+  "margin-top": 5,
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces", "custom/spotify", "tray"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "custom/network-id",
+    "bluetooth",
+    "battery",
+    "custom/notification",
+  ],
+
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "persistent-workspaces": {
+      "*": 5,
+    },
+  },
+
+  "custom/spotify": {
+    "format": "{}",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "exec": "python3 ~/.config/waybar/scripts/spotify_scroll.py",
+    "escape": true,
+  },
+
+  "tray": {
+    "spacing": 10,
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#bd93f9'><b>{}</b></span>",
+        "days": "<span color='#f8f8f2'>{}</span>",
+        "weeks": "<span color='#6272a4'>W{}</span>",
+        "weekdays": "<span color='#8be9fd'><b>{}</b></span>",
+        "today": "<span color='#ff79c6'><b><u>{}</u></b></span>",
+      },
+    },
+  },
+
+  "custom/network-id": {
+    "exec": "~/.config/waybar/scripts/wifi_status.sh",
+    "interval": 5,
+    "tooltip": false,
+    "on-click": "~/.config/rofi/wifi-menu/rofi-wifi.sh",
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "on-click": "~/.config/rofi/bluetooth-menu/rofi-bluetooth",
+  },
+
+  "battery": {
+    "states": { "warning": 30, "critical": 15 },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+  },
+
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+  },
+}

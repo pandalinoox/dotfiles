@@ -1,0 +1,194 @@
+@define-color bg-primary      #1e1f28;
+@define-color bg-secondary    #282a36;
+@define-color bg-tertiary     #44475a;
+@define-color bg-selected     #6272a4;
+
+@define-color fg-primary      #f8f8f2;
+@define-color fg-secondary    #bbbbbb;
+@define-color fg-tertiary     #6272a4;
+@define-color fg-disabled     #44475a;
+
+@define-color accent-orange   #ffb86c;
+@define-color accent-blue     #8be9fd;
+@define-color accent-purple   #bd93f9;
+@define-color accent-pink     #ff79c6;
+@define-color accent-red      #ff5555;
+
+@define-color border-primary  #44475a;
+@define-color border-focus    #bd93f9;
+
+@define-color mpris-album-art-overlay rgba(30, 31, 40, 0.55);
+@define-color mpris-button-hover rgba(68, 71, 90, 0.5);
+
+* {
+    outline: none;
+    font-family: "FiraCode Nerd Font", monospace;
+    font-size: 16px;
+    text-shadow: none;
+    color: @fg-primary;
+}
+
+.control-center {
+    background-color: @bg-primary;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.8);
+    border: 2px solid @accent-purple;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.control-center .notification-row .notification-background {
+    border-radius: 6px;
+    margin-top: 5px;
+    background: none;
+}
+
+.notification {
+    background-color: @bg-secondary;
+    border-radius: 6px;
+    border: 1px solid @border-primary;
+    border-left: 5px solid @accent-purple;
+    margin: 8px 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.notification.critical {
+    border: 1px solid @border-primary;
+    border-left: 5px solid @accent-red;
+}
+
+.notification-content {
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.summary {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: @accent-pink;
+}
+
+.time {
+    font-size: 0.85rem;
+    color: @fg-secondary;
+}
+
+.body {
+    font-size: 1rem;
+    color: @fg-primary;
+}
+
+.close-button {
+    background-color: transparent;
+    border-radius: 6px;
+}
+
+.close-button:hover {
+    background-color: @accent-pink;
+    color: @bg-primary;
+}
+
+trough highlight {
+    background: @accent-purple;
+    border-radius: 4px;
+}
+
+scale trough {
+    margin: 0rem 1rem;
+    background-color: @bg-tertiary;
+    min-height: 8px;
+    border-radius: 4px;
+}
+
+slider {
+    background-color: @fg-primary;
+    border-radius: 50%;
+}
+
+.widget-mpris {
+    padding: 8px;
+}
+
+.widget-mpris .widget-mpris-player {
+    padding: 12px;
+    background-color: @bg-secondary;
+    border-radius: 8px;
+    border: 1px solid @border-primary;
+}
+
+.widget-mpris-title {
+    font-weight: bold;
+    color: @accent-pink;
+}
+
+.widget-mpris-subtitle {
+    color: @accent-pink;
+}
+
+.widget-volume, .widget-backlight {
+    background-color: @bg-secondary;
+    border-radius: 8px;
+    margin: 5px 10px;
+    padding: 10px;
+}
+
+.widget-volume > box > label {
+    color: @fg-primary;
+}
+
+.widget-backlight > box > label {
+    color: @accent-pink;
+}
+
+.widget-dnd {
+    padding: 10px;
+    margin: 5px 10px;
+    background-color: @bg-secondary;
+    border-radius: 8px;
+}
+
+.widget-dnd > label {
+    color: @accent-orange;
+    font-weight: bold;
+}
+
+.widget-dnd > switch {
+    background: @bg-tertiary;
+    border-radius: 12px;
+}
+
+.widget-dnd > switch:checked {
+    background: @accent-orange;
+}
+
+.widget-dnd > switch slider {
+    background-color: white;
+}
+
+.widget-title {
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.widget-title > label {
+    font-size: 1.4rem;
+    color: @accent-purple;
+}
+
+.widget-title > button {
+    background: @bg-tertiary;
+    color: @fg-primary;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 12px;
+}
+
+.widget-title > button:hover {
+    background: @accent-pink;
+    color: @bg-primary;
+}
+
+.control-center list > row {
+    background-color: transparent;
+    border: none;
+    padding: 10px 6px;
+}

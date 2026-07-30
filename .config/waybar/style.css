@@ -1,0 +1,85 @@
+@import "./colors/dracula.css";
+
+* {
+    font-family: "FiraCode Nerd Font Propo", "FiraCode Nerd Font";
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+#workspaces,
+#custom-spotify,
+#tray,
+#clock,
+#custom-network-id,
+#bluetooth,
+#battery,
+#custom-notification {
+    background-color: @bg;
+    border: 1px solid @color0;
+    border-radius: 12px;
+    padding: 0px 12px;
+    margin: 4px 3px;
+}
+
+#workspaces {
+    padding: 4px 8px;
+}
+
+#workspaces button {
+    padding: 2px 4px;
+    margin: 2px 4px;
+    border-radius: 12px;
+    color: transparent;
+    background-color: alpha(@color0, 0.3);
+    transition: all 0.4s cubic-bezier(.55,-0.04,.3,1.44);
+}
+
+#workspaces button.active {
+    color: @color12;
+    background-color: @selection_bg;
+    padding: 2px 6px;
+    min-width: 40px;
+}
+
+#workspaces button.urgent {
+    background-color: @color1;
+    color: transparent;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@selection_bg, 0.6);
+    color: alpha(@color12, 0.5);
+}
+
+#custom-spotify.playing {
+    color: @color2;
+}
+
+#custom-spotify.paused {
+    color: @color8;
+}
+
+#custom-spotify.stopped {
+    color: @color1;
+    opacity: 0.6;
+}
+
+#custom-network-id { color: @color4; }
+#bluetooth { color: @color12; }
+#battery { color: @color2; }
+#clock { color: @color14; }
+#custom-notification { color: @color13; }
+
+#custom-spotify:hover,
+#custom-network-id:hover,
+#bluetooth:hover,
+#battery:hover,
+#clock:hover,
+#custom-notification:hover {
+    background-color: @selection_bg;
+}

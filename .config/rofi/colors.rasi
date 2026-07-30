@@ -1,0 +1,17 @@
+/*****----- Global Properties -----*****/
+* {
+    background:              #1e1f28;
+    background-alt:          #44475a;
+    foreground:              #f8f8f2;
+    foreground-alt:          #bbbbbb;
+
+    selected:                #44475a;
+    selected-foreground:     #1e1f28;
+
+    active:                  #50fa7b;
+    urgent:                  #ff5555;
+    border-color:            #44475a;
+    highlight:               #bd92f8;
+
+    font: "FiraCode Nerd Font Propo 14";
+}
