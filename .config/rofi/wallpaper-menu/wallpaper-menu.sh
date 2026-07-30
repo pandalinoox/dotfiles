@@ -41,11 +41,11 @@ awww img "$SELECTED" \
     --transition-type any \
     --transition-duration 1.5
 
-# --- Sync wallpaper with Hyprlock ---
+# Sync wallpaper with Hyprlock
 mkdir -p "$(dirname "$HYPRLOCK_LINK")"
 ln -sf "$SELECTED" "$HYPRLOCK_LINK"
 
-# --- Generate Rofi wallpaper
+# Generate Rofi wallpaper
 magick "$SELECTED" \
     -gravity center \
     -resize 500x500^ \
