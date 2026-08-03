@@ -1,0 +1,6 @@
+hl.on("hyprland.start", function()
+	hl.exec_cmd("awww-daemon")
+	hl.exec_cmd("waybar")
+	hl.exec_cmd("syawnc")
+	hl.exec_cmd("hyprlock -c ~/.config/hypr/hyprlock/hyprlock.conf")
+end)
