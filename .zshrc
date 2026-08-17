@@ -12,8 +12,10 @@ compinit
 # End of lines added by compinstall
 
 export PATH="$PATH:$HOME/.local/bin"
-eval "$(oh-my-posh init zsh --config ~/.cache/oh-my-posh/themes/dracula.omp.json)"
+export PATH="$HOME/.tmuxifier/bin:$PATH"
 
+eval "$(oh-my-posh init zsh --config ~/.cache/oh-my-posh/themes/dracula.omp.json)"
+eval "$(tmuxifier init -)"
 #compdef
 compdef eza=ls
 
