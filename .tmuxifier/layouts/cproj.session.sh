@@ -13,6 +13,8 @@ if initialize_session "cproj"; then
 
   new_window "gdb"
 
+  new_window "zsh"
+
   select_window 0
 
   select_pane 0
