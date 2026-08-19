@@ -3,10 +3,10 @@ if initialize_session "cproj"; then
 
   new_window "vim"
 
-  split_h 30
+  split_h 34
   run_cmd "lg"
 
-  split_v 3
+  split_v 2
   run_cmd "cava"
 
   new_window "cmake"
