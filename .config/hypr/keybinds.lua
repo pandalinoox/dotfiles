@@ -12,7 +12,10 @@ local mainMod = "SUPER"
 
 -- Core binds
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("[float; size 800 400; center] kitty"))
+hl.bind(
+	mainMod .. " + SHIFT + Q",
+	hl.dsp.exec_cmd("[float; center] kitty --override=initial_window_width=74c --override=initial_window_height=14c")
+)
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
 -- bind = $mainMod, M, exit
