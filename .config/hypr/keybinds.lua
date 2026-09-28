@@ -6,6 +6,7 @@ local wifi_menu = "~/.config/rofi/wifi-menu/rofi-wifi.sh"
 local wallpaper_menu = "~/.config/rofi/wallpaper-menu/wallpaper-menu.sh"
 local lock = "hyprlock -c ~/.config/hypr/hyprlock/hyprlock.conf"
 local powermenu = "wlogout"
+local focus_mode = "~/.config/hypr/scripts/focus-mode.sh"
 
 -- Modifier
 local mainMod = "SUPER"
@@ -21,6 +22,7 @@ hl.bind(mainMod .. " + C", hl.dsp.window.close())
 -- bind = $mainMod, M, exit
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(focus_mode))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(app_menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
