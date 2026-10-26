@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import subprocess
 import json
+import subprocess
 import time
 
 MAX_WORDS = 3
@@ -27,11 +27,13 @@ def get_spotify_data():
     try:
         status = (
             subprocess.check_output(
-                ["playerctl", "-p", "spotify", "status"], stderr=subprocess.DEVNULL
+                ["playerctl", "-p", "spotify", "status"],
+                stderr=subprocess.DEVNULL,
             )
             .decode("utf-8")
             .strip()
         )
+
         title = (
             subprocess.check_output(
                 ["playerctl", "-p", "spotify", "metadata", "title"],
@@ -40,9 +42,12 @@ def get_spotify_data():
             .decode("utf-8")
             .strip()
         )
+
         if title.lower() == "advertisement" or not title:
             return "", status
+
         return title, status
+
     except Exception:
         return "", "Stopped"
 
@@ -51,6 +56,7 @@ def main():
     last_song = ""
     scroll_index = 0
     just_changed = False
+    pause_until = 0
 
     while True:
         current_song, status = get_spotify_data()
@@ -58,45 +64,30 @@ def main():
 
         if not current_song or status == "Stopped":
             print(json.dumps({"text": "", "class": "stopped"}), flush=True)
-            time.sleep(2)
+            last_song = ""
+            scroll_index = 0
+            just_changed = False
+            pause_until = 0
+            time.sleep(1)
             continue
 
         if current_song != last_song:
-            scroll_index = 0
             last_song = current_song
+            scroll_index = 0
             just_changed = True
+            pause_until = 0
 
         dynamic_max_length = max_length_from_words(current_song)
+        display_text = current_song + " | "
+        text_len = len(display_text)
 
         if len(current_song) > dynamic_max_length:
-            display_text = current_song + " | "
-            text_len = len(display_text)
-
-            if scroll_index == 0 and status == "Playing" and not just_changed:
-                content = (display_text * 2)[:dynamic_max_length]
-                print(
-                    json.dumps(
-                        {
-                            "text": f" {content}",
-                            "tooltip": current_song,
-                            "class": css_class,
-                        }
-                    ),
-                    flush=True,
-                )
-
-                for _ in range(PAUSE_TIME):
-                    check_song, _ = get_spotify_data()
-                    if check_song != last_song:
-                        break
-                    time.sleep(1)
-
-                scroll_index += 1
-                continue
+            scroll_index %= text_len
 
             content = (display_text * 2)[
                 scroll_index : scroll_index + dynamic_max_length
             ]
+
             print(
                 json.dumps(
                     {
@@ -108,12 +99,30 @@ def main():
                 flush=True,
             )
 
-            if status == "Playing":
-                scroll_index = (scroll_index + 1) % text_len
+            if status == "Paused":
+                pause_until += 0.5
+                time.sleep(0.5)
+                continue
+
+            now = time.monotonic()
+
+            if just_changed:
                 just_changed = False
-                time.sleep(SCROLL_SPEED)
-            else:
-                time.sleep(1)
+                pause_until = now + PAUSE_TIME
+                time.sleep(0.2)
+                continue
+
+            if now < pause_until:
+                time.sleep(min(0.2, pause_until - now))
+                continue
+
+            scroll_index = (scroll_index + 1) % text_len
+
+            if scroll_index == 0:
+                pause_until = time.monotonic() + PAUSE_TIME
+
+            time.sleep(SCROLL_SPEED)
+
         else:
             print(
                 json.dumps(
@@ -125,7 +134,7 @@ def main():
                 ),
                 flush=True,
             )
-            time.sleep(1)
+            time.sleep(0.5)
 
 
 if __name__ == "__main__":
